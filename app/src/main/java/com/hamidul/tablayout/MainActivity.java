@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
         tabLayout = findViewById(R.id.tabLayout);
         viewPager2 = findViewById(R.id.viewPater2);
+
         viewPagerAdapter = new ViewPagerAdapter(this);
         viewPager2.setAdapter(viewPagerAdapter);
         
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /*
         viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
@@ -55,6 +57,17 @@ public class MainActivity extends AppCompatActivity {
                 tabLayout.getTabAt(position).select();
             }
         });
+
+         */
+
+        viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                tabLayout.getTabAt(position).select();
+            }
+        });
+
 
     }
 
@@ -79,9 +92,10 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public int getItemCount() {
-            return 3;
+            return tabLayout.getTabCount();
         }
     }
+
 
 
 }
